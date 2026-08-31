@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this software or the MULTI-SCORE method, please cite the paper below."
+title: "MULTI-SCORE: Zero-Shot Multimodal Retrieval with Multi-Scale Contextual Representations"
+authors:
+  - family-names: Saha
+    given-names: Sourajit
+    affiliation: "University of Maryland, Baltimore County"
+  - family-names: Gokhale
+    given-names: Tejas
+    affiliation: "University of Maryland, Baltimore County"
+version: 0.1.0
+license: MIT
+repository-code: "https://github.com/sourajitcs/multiscore"
+url: "https://sourajitcs.github.io/multiscore/"
+preferred-citation:
+  type: conference-paper
+  title: "Zero-Shot Multimodal Retrieval with Multi-Scale Contextual Representations"
+  authors:
+    - family-names: Saha
+      given-names: Sourajit
+    - family-names: Gokhale
+      given-names: Tejas
+  collection-title: "Proceedings of the Annual Meeting of the Association for Computational Linguistics (ACL)"
+  year: 2026

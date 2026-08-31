@@ -1,0 +1,13 @@
+# Core (enough for Stage-1, the metrics, the toy demo and the whole test suite).
+numpy>=1.23
+pyyaml>=6.0
+tqdm>=4.64
+
+# Real backbones -- install these to run Qwen3-MRL and the Stage-2 MLLMs.
+# torch>=2.1
+# transformers>=4.51
+# accelerate>=0.30
+# pillow>=9.0        # images
+# librosa>=0.10      # audio
+# soundfile>=0.12    # audio
+# av>=11.0           # video decoding
