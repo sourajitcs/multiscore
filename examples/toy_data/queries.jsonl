@@ -1,0 +1,6 @@
+{"id": "q1", "text": "a person is swimming in some white water rapids", "positives": ["c001"]}
+{"id": "q2", "text": "a dog catching a frisbee in a park", "positives": ["c005"]}
+{"id": "q3", "text": "someone cooking onions in a pan", "positives": ["c004"]}
+{"id": "q4", "text": "a raft going over a drop in white water", "positives": ["c011", "c024"]}
+{"id": "q5", "text": "a musician playing an instrument for commuters", "positives": ["c017"]}
+{"id": "q6", "text": "children playing in an outdoor swimming pool", "positives": ["c019"]}

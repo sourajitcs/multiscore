@@ -1,0 +1,28 @@
+# Tiny end-to-end configuration that needs no checkpoints and no benchmark data.
+# Backed by the deterministic stub backends, so it runs on CPU in seconds --
+# useful for testing the plumbing, not for measuring retrieval quality.
+base:
+  path: default.yaml
+
+task: t2v
+dataset: toy
+queries: examples/toy_data/queries.jsonl
+candidates: examples/toy_data/candidates.jsonl
+index_dir: runs/index/toy
+output_dir: runs/toy
+device: cpu
+
+stage1:
+  embedder: stub-mrl
+  top_k: 5
+  epsilon: 0.05
+  mrl:
+    base_dim: 8
+    num_levels: 6
+    normalize: true
+
+stage2:
+  backend: stub-mllm
+  alpha: 0.6
+  num_questions: 4
+  num_cot_examples: 2

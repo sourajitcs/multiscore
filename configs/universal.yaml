@@ -1,0 +1,27 @@
+# Universal retrieval: one pooled candidate set over all 32 datasets
+# (~5.7M items), so the retriever must search a cross-modality space.
+#
+# This is the setting where Pyramid Rank matters most -- the paper measures a
+# 3.3x Stage-1 speed-up at 5.7M candidates with no loss in R@100.
+base:
+  path: default.yaml
+
+task: universal
+dataset: all-32
+index_dir: runs/index/universal
+output_dir: runs/universal
+
+stage1:
+  embedder: qwen3-mrl
+  top_k: 100
+  epsilon: 0.02
+  mrl:
+    base_dim: 32
+    num_levels: 6
+    normalize: true
+
+stage2:
+  backend: qwen2.5-omni-7b
+  alpha: 0.6
+  num_questions: 7
+  num_cot_examples: 2

@@ -1,0 +1,24 @@
+# Text-image retrieval on M-BEIR (8 tasks) and the other image-text benchmarks
+# (Urban-1K, Flickr30K, GeneCIS).
+base:
+  path: default.yaml
+
+task: t2i
+dataset: MSCOCO
+index_dir: runs/index/mbeir
+output_dir: runs/mbeir
+
+stage1:
+  embedder: qwen3-mrl
+  top_k: 100
+  epsilon: 0.02
+  mrl:
+    base_dim: 32
+    num_levels: 6
+    normalize: true
+
+stage2:
+  backend: qwen2.5-omni-7b
+  alpha: 0.6           # image-retrieval setting (Section 4.1)
+  num_questions: 7
+  num_cot_examples: 2

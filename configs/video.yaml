@@ -1,0 +1,23 @@
+# Text-video and video-text retrieval: MSRVTT-1kA, MSVD, LSMDC, DiDeMo.
+base:
+  path: default.yaml
+
+task: t2v
+dataset: MSRVTT-1kA
+index_dir: runs/index/msrvtt
+output_dir: runs/msrvtt
+
+stage1:
+  embedder: qwen3-mrl
+  top_k: 100
+  epsilon: 0.02
+  mrl:
+    base_dim: 32
+    num_levels: 6
+    normalize: true
+
+stage2:
+  backend: qwen2.5-omni-7b
+  alpha: 0.3           # video/audio setting (Section 4.1)
+  num_questions: 7
+  num_cot_examples: 2

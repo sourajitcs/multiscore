@@ -1,0 +1,24 @@
+# Audio retrieval (t -> a) and joint audio-visual retrieval (t -> (a,v)):
+# AudioCaps and Clotho.
+base:
+  path: default.yaml
+
+task: t2a
+dataset: AudioCaps
+index_dir: runs/index/audiocaps
+output_dir: runs/audiocaps
+
+stage1:
+  embedder: qwen3-mrl
+  top_k: 100
+  epsilon: 0.02
+  mrl:
+    base_dim: 32
+    num_levels: 6
+    normalize: true
+
+stage2:
+  backend: qwen2.5-omni-7b
+  alpha: 0.3           # video/audio setting (Section 4.1)
+  num_questions: 7
+  num_cot_examples: 2

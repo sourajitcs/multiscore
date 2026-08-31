@@ -1,0 +1,45 @@
+# Default MULTI-SCORE configuration -- the setup described in the paper.
+#
+# Stage-1 runs on offline captions with Qwen3-MRL; Stage-2 re-ranks the top-K
+# with Qwen2.5-Omni-7B.  Nothing here is trained: both stages are zero-shot.
+
+task: t2i
+device: auto          # auto | cuda | cpu
+dtype: bfloat16
+seed: 0
+index_dir: runs/index
+output_dir: runs/latest
+
+stage1:
+  embedder: qwen3-mrl # Qwen3-Embedding-0.6B, the MRL-capable foundation encoder
+  top_k: 100          # K candidates handed to Stage-2
+  epsilon: 0.02       # tolerance; the paper's sweep peaks here
+  tau_min: -1.0
+  tau_max: 1.0
+  exact_padding: false   # true = build the zero-padded z vectors literally (slow, for checking Eq. 4)
+  final_rescore: true    # re-score the survivors at level L before sorting
+  mrl:
+    base_dim: 32      # d, level-1 width
+    num_levels: 6     # L; D = d * 2^(L-1) = 1024
+    normalize: true
+
+stage2:
+  backend: qwen2.5-omni-7b
+  # alpha weights S_CoT against S_QA in Eq. 9.
+  #
+  # NOTE: the paper is internally inconsistent about the per-modality values.
+  # Section 4.1 (Implementation Details) states alpha = 0.6 for image retrieval
+  # and 0.3 for video/audio; the alpha sweep (Figure 8) and the accompanying
+  # analysis state the opposite assignment.  We default to the Implementation
+  # Details reading; configs/video.yaml and configs/audio.yaml carry the other
+  # value, and scripts/reproduce/sweep_alpha.py re-derives it from data.
+  alpha: 0.6
+  num_questions: 7      # M; >= 7 is best in the ablation
+  num_cot_examples: 2   # 2 in-context CoT examples is the reported optimum
+  emb_token: "<emb>"
+  max_answer_tokens: 5
+  temperature: 0.0
+  cot_batch_size: 8
+  qa_batch_size: 4
+  enable_cot: true
+  enable_qa: true
