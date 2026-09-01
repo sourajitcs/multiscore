@@ -449,9 +449,4 @@ own licences.
 - [M-BEIR / UniIR](https://huggingface.co/datasets/TIGER-Lab/M-BEIR) for the unified multimodal retrieval benchmark
 - [HuggingFace Transformers](https://github.com/huggingface/transformers) for model serving
 
-This work was funded in part by DARPA's SciFy program (agreement HR00112520301). We
-acknowledge high-performance computing support from UMBC HPCF and a Lambda Inc. award.
-The views and conclusions are those of the authors and should not be interpreted as
-representing official policies or endorsements of employers, funding agencies, or
-governments.
 
