@@ -455,7 +455,3 @@ The views and conclusions are those of the authors and should not be interpreted
 representing official policies or endorsements of employers, funding agencies, or
 governments.
 
-## Contact
-
-For questions or issues, please open a GitHub issue or contact the authors at
-`{ssaha2, gokhale}@umbc.edu`.
