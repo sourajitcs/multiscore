@@ -428,12 +428,12 @@ Hardware: Stage-1 on 8 × 4 NVIDIA H100 (batch 128); Stage-2 on 4 × 16 NVIDIA L
 If you find this work useful, please cite our paper:
 
 ```bibtex
-@inproceedings{saha2026multiscore,
+@inproceedings{saha2026zero,
   title={Zero-Shot Multimodal Retrieval with Multi-Scale Contextual Representations},
   author={Saha, Sourajit and Gokhale, Tejas},
-  booktitle={Proceedings of the Annual Meeting of the Association for Computational Linguistics (ACL)},
-  year={2026},
-  url={https://sourajitcs.github.io/multiscore/},
+  booktitle={Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+  pages={20304--20324},
+  year={2026}
 }
 ```
 
